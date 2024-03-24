@@ -389,4 +389,9 @@
     #define DIO2_AS_RF_SWITCH false
   #endif
 
+  #ifndef MANUAL_RXTX
+    #define MANUAL_RXTX false
+    const int pin_txen = -1;
+  #endif
+
 #endif

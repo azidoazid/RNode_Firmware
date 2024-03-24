@@ -189,9 +189,24 @@ uint8_t ISR_VECT sx126x::singleTransfer(uint8_t opcode, uint16_t address, uint8_
 
 void sx126x::rxAntEnable()
 {
-  if (_rxen != -1) {
-    digitalWrite(_rxen, HIGH);
-  }
+    #if MANUAL_RXTX
+      if (_txen != -1) {
+          digitalWrite(_txen, LOW);
+      }
+    #endif  
+    if (_rxen != -1) {
+        digitalWrite(_rxen, HIGH);
+    }
+}
+
+void sx128x::txAntEnable()
+{
+    if (_txen != -1) {
+        digitalWrite(_txen, HIGH);
+    }
+    if (_rxen != -1) {
+        digitalWrite(_rxen, LOW);
+    }
 }
 
 void sx126x::loraMode() {
@@ -473,7 +488,11 @@ int sx126x::beginPacket(int implicitHeader)
 int sx126x::endPacket()
 {
       setPacketParams(_preambleLength, _implicitHeaderMode, _payloadLength, _crcMode);
-
+      
+      #if MANUAL_RXTX
+        txAntEnable();
+      #endif
+      
       // put in single TX mode
       uint8_t timeout[3] = {0};
       executeOpcode(OP_TX_6X, timeout, 3);

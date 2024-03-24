@@ -122,6 +122,7 @@ private:
   int _reset;
   int _dio0;
   int _rxen;
+  int _txen;
   int _busy;
   long _frequency;
   int _txp;
