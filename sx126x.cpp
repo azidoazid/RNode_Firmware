@@ -199,7 +199,7 @@ void sx126x::rxAntEnable()
     }
 }
 
-void sx128x::txAntEnable()
+void sx126x::txAntEnable()
 {
     if (_txen != -1) {
         digitalWrite(_txen, HIGH);
@@ -492,7 +492,7 @@ int sx126x::endPacket()
       #if MANUAL_RXTX
         txAntEnable();
       #endif
-      
+
       // put in single TX mode
       uint8_t timeout[3] = {0};
       executeOpcode(OP_TX_6X, timeout, 3);
