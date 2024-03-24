@@ -39,8 +39,10 @@
   #define BOARD_RNODE_NG_20   0x40
   #define BOARD_RNODE_NG_21   0x41
   #define BOARD_RNODE_NG_22   0x42
+  #define BOARD_MT_HYDRA      0x43
   #define BOARD_GENERIC_NRF52 0x50
   #define BOARD_RAK4630       0x51
+
 
   #if defined(__AVR_ATmega1284P__)
     #define PLATFORM PLATFORM_AVR
@@ -335,6 +337,13 @@
         #endif
       #endif
 
+    #elif BOARD_MODEL == BOARD_MT_HYDRA
+      #define MODEM SX1262
+      #define DIO2_AS_RF_SWITCH false
+      #define MANUAL_RXTX true
+      const int pin_cs = 18;
+      const int pin_reset = 23;
+    #endif
     #else
       #error An unsupported ESP32 board was selected. Cannot compile RNode firmware.
     #endif
