@@ -351,7 +351,7 @@
       const int pin_reset = 23;
       const int pin_rxen = 14;
       const int pin_txen = 13;
-    #endif
+    
     #else
       #error An unsupported ESP32 board was selected. Cannot compile RNode firmware.
     #endif
