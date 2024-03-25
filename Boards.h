@@ -340,6 +340,7 @@
     #elif BOARD_MODEL == BOARD_MT_HYDRA
       #define MODEM SX1262
       #define DIO2_AS_RF_SWITCH false
+      #define HAS_RF_SWITCH_RX_TX true
       #define MANUAL_RXTX true
       #define HAS_CONSOLE true
       #define HAS_EEPROM true
@@ -348,9 +349,12 @@
       #define I2C_SDA 33
       #define I2C_SCL 36
       const int pin_cs = 18;
+      const int pin_dio = 33;
       const int pin_reset = 23;
       const int pin_rxen = 14;
       const int pin_txen = 13;
+      const int pin_led_rx = -1;
+      const int pin_led_tx = -1;
     
     #else
       #error An unsupported ESP32 board was selected. Cannot compile RNode firmware.
@@ -405,10 +409,4 @@
   #ifndef DIO2_AS_RF_SWITCH
     #define DIO2_AS_RF_SWITCH false
   #endif
-
-  #ifndef MANUAL_RXTX
-    #define MANUAL_RXTX false
-    const int pin_txen = -1;
-  #endif
-
 #endif

@@ -189,7 +189,7 @@ uint8_t ISR_VECT sx126x::singleTransfer(uint8_t opcode, uint16_t address, uint8_
 
 void sx126x::rxAntEnable()
 {
-    #if MANUAL_RXTX
+    #if HAS_RF_SWITCH_RX_TX
       if (_txen != -1) {
           digitalWrite(_txen, LOW);
       }
@@ -489,7 +489,7 @@ int sx126x::endPacket()
 {
       setPacketParams(_preambleLength, _implicitHeaderMode, _payloadLength, _crcMode);
       
-      #if MANUAL_RXTX
+      #if HAS_RF_SWITCH_RX_TX
         txAntEnable();
       #endif
 
