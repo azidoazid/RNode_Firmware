@@ -101,7 +101,7 @@ extern SPIClass SPI;
 
 sx126x::sx126x() :
   _spiSettings(8E6, MSBFIRST, SPI_MODE0),
-  _ss(LORA_DEFAULT_SS_PIN), _reset(LORA_DEFAULT_RESET_PIN), _dio0(LORA_DEFAULT_DIO0_PIN), _busy(LORA_DEFAULT_BUSY_PIN), _rxen(LORA_DEFAULT_RXEN_PIN),
+  _ss(LORA_DEFAULT_SS_PIN), _reset(LORA_DEFAULT_RESET_PIN), _dio0(LORA_DEFAULT_DIO0_PIN), _busy(LORA_DEFAULT_BUSY_PIN), _rxen(LORA_DEFAULT_RXEN_PIN), _txen(LORA_DEFAULT_TXEN_PIN),
   _frequency(0),
   _txp(0),
   _sf(0x07),
@@ -129,6 +129,8 @@ bool sx126x::preInit() {
   
   #if BOARD_MODEL == BOARD_RNODE_NG_22
     SPI.begin(pin_sclk, pin_miso, pin_mosi, pin_cs);
+  #elif BOARD_MODEL == BOARD_MT_HYDRA
+    SPI.begin(5, 19, 27, 18);   
   #else
     SPI.begin();
   #endif
@@ -930,13 +932,14 @@ byte sx126x::random()
     return readRegister(REG_RANDOM_GEN_6X);
 }
 
-void sx126x::setPins(int ss, int reset, int dio0, int busy, int rxen)
+void sx126x::setPins(int ss, int reset, int dio0, int busy, int rxen, int txen)
 {
   _ss = ss;
   _reset = reset;
   _dio0 = dio0;
   _busy = busy;
   _rxen = rxen;
+  _txen = txen;
 }
 
 void sx126x::setSPIFrequency(uint32_t frequency)

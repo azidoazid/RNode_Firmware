@@ -102,7 +102,7 @@ void setup() {
   #if MODEM == SX1276 || MODEM == SX1278
   LoRa->setPins(pin_cs, pin_reset, pin_dio, pin_busy);
   #elif MODEM == SX1262
-  LoRa->setPins(pin_cs, pin_reset, pin_dio, pin_busy, pin_rxen);
+  LoRa->setPins(pin_cs, pin_reset, pin_dio, pin_busy, pin_rxen, pin_txen);
   #elif MODEM == SX1280
   LoRa->setPins(pin_cs, pin_reset, pin_dio, pin_busy, pin_rxen, pin_txen);
   #endif
