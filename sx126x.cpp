@@ -131,7 +131,7 @@ bool sx126x::preInit() {
     SPI.begin(pin_sclk, pin_miso, pin_mosi, pin_cs);
   #elif BOARD_MODEL == BOARD_MT_HYDRA
     SPI.begin(5, 19, 27, 18);   
-  #else
+  #elif
     SPI.begin();
   #endif
 
