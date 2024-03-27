@@ -31,7 +31,7 @@
   #define BOARD_HMBRW         0x32
   #define BOARD_TBEAM         0x33
   #define BOARD_HUZZAH32      0x34
-  #define BOARD_GENERIC_ESP32 0x35
+  #define BOARD_GENERIC_ESP32 0x43  // was 35
   #define BOARD_LORA32_V2_0   0x36
   #define BOARD_LORA32_V2_1   0x37
   #define BOARD_LORA32_V1_0   0x39
@@ -39,7 +39,7 @@
   #define BOARD_RNODE_NG_20   0x40
   #define BOARD_RNODE_NG_21   0x41
   #define BOARD_RNODE_NG_22   0x42
-  #define BOARD_MT_HYDRA      0x43
+  #define BOARD_MT_HYDRA      0x35 // was 43
   #define BOARD_GENERIC_NRF52 0x50
   #define BOARD_RAK4630       0x51
 

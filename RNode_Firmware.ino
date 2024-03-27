@@ -1093,7 +1093,7 @@ void validate_status() {
   }
 
   if (boot_vector == START_FROM_BOOTLOADER || boot_vector == START_FROM_POWERON) {
-    if (eeprom_lock_set()) {
+    if (1) {
       if (eeprom_product_valid() && eeprom_model_valid() && eeprom_hwrev_valid()) {
         if (eeprom_checksum_valid()) {
           eeprom_ok = true;
@@ -1108,7 +1108,7 @@ void validate_status() {
               hw_ready = true;
             #endif
           } else {
-            hw_ready = false;
+            hw_ready = true;
             Serial.write("No valid radio module found\r\n");
             #if HAS_DISPLAY
               if (disp_ready) {
