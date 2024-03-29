@@ -39,7 +39,7 @@
   #define BOARD_RNODE_NG_20   0x40
   #define BOARD_RNODE_NG_21   0x41
   #define BOARD_RNODE_NG_22   0x42
-  #define BOARD_MT_HYDRA      0x43
+  #define BOARD_MT_HYDRA      0x32
   #define BOARD_GENERIC_NRF52 0x50
   #define BOARD_RAK4630       0x51
 
